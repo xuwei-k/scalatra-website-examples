@@ -5,12 +5,12 @@ import org.scalatra.example.data.DatabaseInit
 
 class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext): Unit = {
     configureDb()
     context mount (new ArticlesController, "/*")
   }
   
-  override def destroy(context:ServletContext) {
+  override def destroy(context:ServletContext): Unit = {
     closeDbConnection()
   }
 }

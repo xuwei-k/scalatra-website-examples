@@ -15,7 +15,7 @@ trait DatabaseInit {
 
   var cpds = new ComboPooledDataSource
 
-  def configureDb() {
+  def configureDb(): Unit = {
     cpds.setDriverClass("org.h2.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)
@@ -33,7 +33,7 @@ trait DatabaseInit {
     }
   }
 
-  def closeDbConnection() {
+  def closeDbConnection(): Unit = {
     logger.info("Closing c3po connection pool")
     cpds.close()
   }

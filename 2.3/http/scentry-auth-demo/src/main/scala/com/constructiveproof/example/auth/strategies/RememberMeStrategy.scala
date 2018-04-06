@@ -48,7 +48,7 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
   /**
    * What should happen if the user is currently not authenticated?
    */
-  override def unauthenticated()(implicit request: HttpServletRequest, response: HttpServletResponse) {
+  override def unauthenticated()(implicit request: HttpServletRequest, response: HttpServletResponse): Unit = {
     app.redirect("/sessions/new")
   }
 

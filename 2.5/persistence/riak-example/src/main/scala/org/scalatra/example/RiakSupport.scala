@@ -13,7 +13,7 @@ trait RiakJavaClientInit {
   // get access to a bucket using a binary connection and the riak-java-client
   val riakClient = RiakFactory.pbcClient
 
-  def configureRiakJavaClient() {
+  def configureRiakJavaClient(): Unit = {
     logger.info("Creating a Riak bucket")
 
     // make sure we've got a bucket to use
@@ -21,7 +21,7 @@ trait RiakJavaClientInit {
   }
 
 
-  def closeRiakJavaClient() {
+  def closeRiakJavaClient(): Unit = {
     logger.info("Closing Riak client")
 
     riakClient.shutdown()

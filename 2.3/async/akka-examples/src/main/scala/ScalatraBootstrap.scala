@@ -9,12 +9,12 @@ class ScalatraBootstrap extends LifeCycle {
   val system = ActorSystem()
   val myActor = system.actorOf(Props[MyActor])
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext): Unit = {
     context.mount(new FutureController(system), "/*")
     context.mount(new MyActorApp(system, myActor), "/actors/*")
   }
 
-  override def destroy(context:ServletContext) {
+  override def destroy(context:ServletContext): Unit = {
     system.shutdown()
   }
 }
